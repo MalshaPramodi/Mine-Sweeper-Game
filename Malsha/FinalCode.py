@@ -99,11 +99,12 @@ class Board:
 class Game:
     def start(self):
         while True:
-            print("Field Options:")
+            print("Field Options:")#field options for the user
             print("1 - 10x10 with 12 mines")
             print("2 - 15x15 with 18 mines")
             print("3 - 20x20 with 24 mines")
-            
+
+            #getting the user input
             field_option = input("Enter the field option (1/2/3) or 'exit' to quit: ")
             
             if field_option.lower() == 'exit':
@@ -123,6 +124,8 @@ class Game:
             
             while True:
                 board.show_board()
+                
+                #getting the user command
                 user_input = input("Enter three letters <row letter><column letter><command>: ").upper()
                 
                 if len(user_input) != 3:
@@ -134,7 +137,7 @@ class Game:
                 command = user_input[2]
                 
                 if not ('A' <= user_input[0] <= chr(ord('A') + size - 1)) or not ('A' <= user_input[1] <= chr(ord('A') + size - 1)):
-                    print("Invalid row or column letter. Try again.")
+                    print("Invalid row or column letter. Try again.") #error
                     continue
                 
                 if command == 'R':
@@ -144,9 +147,9 @@ class Game:
                 elif command == 'F':
                     board.flag(row, col)
                 else:
-                    print("Invalid command. Try again.")
+                    print("Invalid command. Try again.")#error
             
-            continue_option = input("Game Over! Do you want to continue playing? (yes/no): ").lower()
+            continue_option = input("Game Over! Do you want to continue playing? (yes/no): ").lower()  #ending the game
             if continue_option != 'yes':
                 print("Exiting the game.")
                 break
