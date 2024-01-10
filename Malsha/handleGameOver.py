@@ -140,6 +140,7 @@ class Game:
                 if command == 'R':
                     game_over = board.reveal(row, col)
                     if game_over:
+                        self.handle_game(board)
                         break
                 elif command == 'F':
                     board.flag(row, col)
@@ -150,6 +151,16 @@ class Game:
             if continue_option != 'yes':
                 print("Exiting the game.")
                 break
+            
+    def handle_game(self, board):
+        print("Game over. You hit a mine.")
+        board.show_board(reveal_all = True)
+        restart_option = input("Game Over! Do you want to continue playing? (yes/no): ").lower()
+        if restart_option == 'yes':
+            return
+        else:
+           print("Exiting the game.")
+           return       
 
 if __name__ == "__main__":
     game = Game()
