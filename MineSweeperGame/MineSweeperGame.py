@@ -1,4 +1,5 @@
 ##Mine Sweeper Game
+
 import random
 
 class Cell:
@@ -106,16 +107,26 @@ class Game:
         
         while True:
             board.show_board()
-            row = int(input("Enter row number: "))
-            col = int(input("Enter column number: "))
-            action = input("Enter 'R' to reveal or 'F' to flag: ").upper()
+            user_input = input("Enter three letters <row letter><column letter><command>: ").upper()
             
-            if action == 'R':
+            if len(user_input) != 3:
+                print("Invalid input format. Try again.")
+                continue
+            
+            row = ord(user_input[0]) - ord('A')
+            col = ord(user_input[1]) - ord('A')
+            command = user_input[2]
+            
+            if not ('A' <= user_input[0] <= chr(ord('A') + size - 1)) or not ('A' <= user_input[1] <= chr(ord('A') + size - 1)):
+                print("Invalid row or column letter. Try again.")
+                continue
+            
+            if command == 'R':
                 board.reveal(row, col)
-            elif action == 'F':
+            elif command == 'F':
                 board.flag(row, col)
             else:
-                print("Invalid input. Try again.")
+                print("Invalid command. Try again.")
 
 if __name__ == "__main__":
     game = Game()
