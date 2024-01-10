@@ -1,5 +1,4 @@
 ##Mine Sweeper Game
-
 import random
 
 class Cell:
@@ -66,7 +65,9 @@ class Board:
                 self.flags += 1
 
     def show_board(self):
+        # Print rows with row letters and cell content
         for i in range(self.size):
+            print(chr(ord('A') + i), end=" |")
             for j in range(self.size):
                 cell = self.grid[i][j]
                 if cell.is_flagged:
@@ -78,6 +79,12 @@ class Board:
                 else:
                     print(cell.neighbor_mines, end=' ')
             print()
+        
+        # Print column letters at the bottom
+        print("   ", end="")
+        for i in range(self.size):
+            print(chr(ord('A') + i), end=" ")
+        print()
 
 class Game:
     def start(self):
