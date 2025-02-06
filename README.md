@@ -28,4 +28,4 @@ R → Reveal a location (e.g., HCR → reveal H, C).
 🔹 Step 4: If the revealed location is empty, it displays the count of neighboring mines. If no mines are nearby, the area is automatically uncovered.  
 🔹 Step 5: The game continues until the player either wins or reveals a mine.
 
-![Alt](MinesweeperConsole.png)
+![Alt](MineSweeperConsole.png)
